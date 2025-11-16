@@ -1,0 +1,95 @@
+1.Découvrir les Fondamentales du SHELL 
+
+Avant toute choses on va faire un  peu d'histoire
+Culture generale:
+Je suis sur linux a Tavers un client ssh,je ne suis pas directement sur la machine, je suis connecter a l'aide d'un outils qui s'appelle teraterm(Tera Term est un programme de communication
+qui permet aux PC de se connecter à des systèmes externes afin d'automatiser des tâches ou de collecter des données. Il est possible de relier Tera Term à une connexion TCP/IP ou à un port série).
+
+linux il y a un noyau puis ce noyau va charger des programme  l'orsqu'il démarree (des service qui seront en tache de fond) et pour interrargir avec ce noyau  il faut bien  que je me connecter pour envoyer des commande
+et resevoir des résultat tout ça en mode text et ça se fais a travers un shell 
+
+On appel ça un Shell car on a un noayx et tout autour une coquille le shell qui permet d'interargir avec le systeme 
+echo $0 pour voir qui je suis la reponse sera -bash car je suis sur shell
+le mot BASH provient de  bourne  le développeur donc bourne  again shell  = BASH
+
+LES REPERTOIRE:
+Avant toute choses j'ai un prompt qui me dis que je suis le nom de mon compte  "rudy"  at "@ubuntu" pour dire adns quelle machine et le tild "~" indique que je suis dans le repoertoire personnel 
+Les couleurs dans les répertoire :
+Mauve ou bleu:Répertoire par Default
+Rouge:Reconnu comme une Archive(extansion dar zip)
+Vert:Marquer Comme executable
+Bleu Clair:un lien symbolique (simplement un raccourci vers un repertoire ou un dossier qu'on trouve ailleurs )
+Rouge avec ecriture blanche: veut dire qu'il a des droit specifique et s'execute en tant que super user 
+
+COMMANNDE :
+MAN:voir le manuel de commande executable  exemple:" man ls" va lister toute les commande possible avec ls
+PWD :Print working Directory en fr "affiche le repertoire courant"    pour savoir ou je me trouve
+ls -la: l → format long (long listing) // a → affiche tous les fichiers, même les fichiers cachés (qui commencent par.)
+ls .. Repertoire Parent 
+rmdir: supprimer dossier vide 
+rm -fr dossier/ :suppresion d'un dossier en mode f:forcer et r:recursive
+cp -r dossier/ dossier2 :cp → copie //-r → “récursif”, nécessaire pour copier un dossier entier avec tous ses sous-dossiers et fichiers // dossier/ → le dossier source //dossier2 → le dossier destination, si il est pas crée ça le crée directement 
+Ls .= CHmine relative s'exprime par un point  equivaut a un ls.
+ls .. = Répertoire parent  avec les deux pint
+ln -s ./Dossier2 ./dossier3: ln pour lin -s dossier2 le fichier qui existe tu va faire un lien symbolique qui s'appele dossier 3  pour un lien symbolique  il existe aussi le lien materielon peut pas le faire sur un repertoire.
+
+VIM:
+Echap > :wq > ça enregistre le contenu que tu a écrit
+Echap :q! > pour pas enregistrer
+
+Les DROIT:
+exemple DRWXR-XR-X
+les 3 premiers cest pour le propriaitaire - le groupe -et tout le monde 
+D:pour directory
+L:pour link
+et le reste c'est un jeu de permission 
+R:pour Read // W:Write //X:execution
+
+2.0 Gérer le contenu d'un fichier et répertoire
+Visualiser un ficher
+cat: fichier.txt
+cat -n fichiers.txt : -n number va faire une numérotation des ligne ecri et vide
+cat -b fichiers.txt : pour supprimer la numérotation sur les ligne verte
+cat -s plus qu'une seul ligne vide 
+less :pour voir le debut de ligne et puis défiler avec espace q pour quitter// on peut rajouter les -s -n ect 
+dans less: on peut utiliser les touche f:forward vers le bas et backwards en arriere 
+je peut aussi utiliser la barre oblique / pour  recherche commme dans vim avec la bare recherche  exemple /ipip entre on va tomber dessus n pour continuer la recherche
+
+2.1 Visualiser le contenu des journaux et binaires
+syslog; journal du systeme  le noyau va journaler des informations et des appli aussi  dans le fichiers var/log/syslog moi pas present dans mon debian il est sour le nom de journalctl on peut l'installer si besoin 
+tail var/log/syslog : pour voir la fin des logs il prend les 10 dernier ligne
+tail -n var/log/syslog ne fonctionne pas sur mon debian 
+strings ls : permet de voir lescaratere laisser en texte dans le binaire
+
+2.1.1 Autre Apres Recherche Bonus 
+cat /ect/os_release : voir la version utiliser ou cat /ect/debian_version/  si os-release pas installer 
+ou uname -a ou uname -m pour l'architecturex86_64
+sudo journalctl ; tout le journal
+sudo journalctl -e : voir le journal le plus recent
+sudo journalctl -f en temps réel 
+sudo journalctl -n20: nombre de ligne qu'on veut afficher 
+
+2.2 Voir les tailles de fichiers et répertoire
+stat log/syslog
+ou stat log/journal permission date ect 
+wc log/journal  world card compte les ligne les mot separer par des espace et nombre d'octet  
+du log/journal disque usage les taille ect 
+du -h log/ : pour etre visible pouru humain le plus recommander et il peut afficher que le total avec la commmande  -s
+df : tout les systeme du fichier o je me trouve  nom les traille  les pourcentage et l'endroit ou les fichier sont monter utliser avec le -h 
+la commande du affiche lenombre de block
+
+3.0 Les Permission
+chmod a+rw nom du fichiers a:pour all veut dire les 3 position +:pour ajoute -:retirer 
+chmod u+rw nom du fichiers u:pour l'utlisateur 
+chmod g+rw nom du fichiers g:pour le groupe
+chmod o+rw nom du fichiers o:pour autre
+chmod o+rw  dossier/ pour un repertoire  pas des fichier avec l'oprion -R majuscule pour se dossier et sous dossier
+pour enlever
+chmod o-rw nom du fichiers o:pour autre ça donne -rw-rw----
+-rw-rw-rw- 
+ -u-g-o-    o pour les autre 
+chown: pour change owner  changer le propriaitaire
+sudo chown -R root:root dossier/ : changer le propraitaire nouveau et le groupe  repertoire et tout les fichier 
+su superuser
+sudo su devenir root sans mdp
+
