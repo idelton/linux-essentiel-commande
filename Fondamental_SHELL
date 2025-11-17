@@ -5,7 +5,7 @@ Culture generale:
 Je suis sur linux a Tavers un client ssh,je ne suis pas directement sur la machine, je suis connecter a l'aide d'un outils qui s'appelle teraterm(Tera Term est un programme de communication
 qui permet aux PC de se connecter à des systèmes externes afin d'automatiser des tâches ou de collecter des données. Il est possible de relier Tera Term à une connexion TCP/IP ou à un port série).
 
-linux il y a un noyau puis ce noyau va charger des programme  l'orsqu'il démarree (des service qui seront en tache de fond) et pour interrargir avec ce noyau  il faut bien  que je me connecter pour envoyer des commande
+linux est  un noyau puis ce noyau va charger des programme  l'orsqu'il démarree (des service qui seront en tache de fond) et pour interrargir avec ce noyau  il faut bien  que je me connecter pour envoyer des commande
 et resevoir des résultat tout ça en mode text et ça se fais a travers un shell 
 
 On appel ça un Shell car on a un noayx et tout autour une coquille le shell qui permet d'interargir avec le systeme 
@@ -26,12 +26,19 @@ MAN:voir le manuel de commande executable  exemple:" man ls" va lister toute les
 PWD :Print working Directory en fr "affiche le repertoire courant"    pour savoir ou je me trouve
 ls -la: l → format long (long listing) // a → affiche tous les fichiers, même les fichiers cachés (qui commencent par.)
 ls .. Repertoire Parent 
+ls * :montre dossier et fichiers  globing de remplacement
+ls ??? : chercher des fichiers qui ont que 3 lettres
+ls \v?? : va afficher vim par exemple specifier un caractere 
+ls [ws]?? expresion entre crochet plusieur caractere exemple de sorti ssl 
+ls [^ws]??  // ^negation en gros il dois pas avori de w ou de s
 rmdir: supprimer dossier vide 
 rm -fr dossier/ :suppresion d'un dossier en mode f:forcer et r:recursive
-cp -r dossier/ dossier2 :cp → copie //-r → “récursif”, nécessaire pour copier un dossier entier avec tous ses sous-dossiers et fichiers // dossier/ → le dossier source //dossier2 → le dossier destination, si il est pas crée ça le crée directement 
-Ls .= CHmine relative s'exprime par un point  equivaut a un ls.
-ls .. = Répertoire parent  avec les deux pint
-ln -s ./Dossier2 ./dossier3: ln pour lin -s dossier2 le fichier qui existe tu va faire un lien symbolique qui s'appele dossier 3  pour un lien symbolique  il existe aussi le lien materielon peut pas le faire sur un repertoire.
+cp -r dossier/ dossier2 :cp → copie //-r → “récursif”, nécessaire pour copier un dossier entier avec tous ses sous-dossiers et fichiers // dossier/ → le dossier source //dossier2 → le dossier destination,
+si il est pas crée ça le crée directement 
+Ls .= Chemin relative s'exprime par un point  equivaut a un ls.
+ls .. = Répertoire parent  avec les deux point
+ln -s ./Dossier2 ./dossier3: ln pour lin -s dossier2 le fichier qui existe tu va faire un lien symbolique qui s'appele dossier 3  pour un lien symbolique  il existe aussi le lien materielon peut pas le
+faire sur un repertoire.
 
 VIM:
 Echap > :wq > ça enregistre le contenu que tu a écrit
@@ -56,7 +63,8 @@ dans less: on peut utiliser les touche f:forward vers le bas et backwards en arr
 je peut aussi utiliser la barre oblique / pour  recherche commme dans vim avec la bare recherche  exemple /ipip entre on va tomber dessus n pour continuer la recherche
 
 2.1 Visualiser le contenu des journaux et binaires
-syslog; journal du systeme  le noyau va journaler des informations et des appli aussi  dans le fichiers var/log/syslog moi pas present dans mon debian il est sour le nom de journalctl on peut l'installer si besoin 
+syslog; journal du systeme  le noyau va journaler des informations et des appli aussi  dans le fichiers var/log/syslog moi pas present dans mon debian il est sur
+le nom de journalctl on peut l'installer si besoin 
 tail var/log/syslog : pour voir la fin des logs il prend les 10 dernier ligne
 tail -n var/log/syslog ne fonctionne pas sur mon debian 
 strings ls : permet de voir lescaratere laisser en texte dans le binaire
@@ -92,4 +100,70 @@ chown: pour change owner  changer le propriaitaire
 sudo chown -R root:root dossier/ : changer le propraitaire nouveau et le groupe  repertoire et tout les fichier 
 su superuser
 sudo su devenir root sans mdp
+
+3.0 Effectuer des recherches et autres opérations
+
+Commande FIND:
+find / pour rechercher de la racine
+Find /home/repartoire/ -name *.txt -print : il va chercher tout les fichier en .txt car il y a le * et me les afficher, sans print ca fonctionne o
+-path 
+find /home/repertoire -iname "[pt]louf\.txt" -print / onpeut tres bien enlever le repertoire  il le trouvera
+find / -name repertoire -type f -print : pour dire que je cherche que des type de fichiers bof ca va riena afficher a par des proces
+find / -name repertoire -type d -print : va affiche le repertoire exemple de reponse /home/repertoire
+find / -name repertoire -type d -print : l pour link 
+find . -atime 1   c'est la dernier fois oule ficher a ete acceder ou dossier , le 1 pour dire depuis un jour 
+       -ctime    le tmeps ou il a ete changer le status 
+       -mtime  le temps ou il a ete modifier 
+sudo find -amin 1  consulter il ya moins de une minute, la par exemple   j'etais donc ect jai modifer en fichier en fesant touch nomdufichers 
+sudo find . -anewer  fstab -print : on cherche tout les fichier qui on ette acceder apres fstab 
+sudo find . -cnewer  fstab -print :  le status a ete changer apres le changement de fstab
+sudo find . -size 12k :cherche les fichier qui font 12k
+                  -12k:chercher moins de 12k
+                  -12k:chercher moins de 12k
+sudo find . -size -empty :souvent utiliser je veut chercher dans une arboresense tout les fichiers qui son vide 
+sudo find -empty -name sources* -type f// ou *sources* : ça va chercher tout les fichier vides qui s'appele sources et de type ficher 
+
+find ~/-type f -exec grep -il 'term' {} \;  :le exec permet denvioyer le resultat en stdin de quelque chose, il faut toujours terminer par {} il sera remplacer par le 
+nom du fichier trouver obliger de le mettre  il va sarreter quand il a un point verguler le point vergule sera stoper par le shell donc faut l'echaper \
+find / -type d -empty -print0 | xargs -0 rm -fr :: supprime tout les dossier vides 
+
+
+COMMANDE GREP:
+sudo grep "^#" fstab on va indiquer un pattern en relation rationelle ^ qui veut dire ca commence par # ensuite on va chercher quand quoi dans fstab 
+grep -i pour insensitive  "during ou lle mot qu'on veut " fstab le nom de fichier
+grep -i "during" fstab 
+grep -ivc "during" fstab : le c donne le nombre de ligne 
+grep -iv "during" fstab : le v permet de de ne pas affichier les mot during
+grep -ivn ""during" ftsab :  numero de ligne
+     -l qui va montrer le nom du fichier
+      -r recursive
+egrep syntaxe enedu de syntaxe rational
+fgrep utilise une liste de mots
+
+utliser la redirection
+il y a lentr standar STDIN STANDAR INPUT   la sorti STDOUT   STDERR si ca affich une erreur 
+si je fais un ls -l ca va etre rediriger vers sorti standar  la STDOUT  je peut dire se resultat tume laffiche pas mais tu va le mettre dans un fichiers  
+qui n'existe pas et va etre rediriger vers resulat si je refais sur le mem resulat il sera ecraser recree a chaque fois mais 
+si je rajouter la double fleche >> pour avoir 350 ligne il va rajouter le resultat de la sorti qui existe ou pas a la fin du fichier se resultat
+ls -l > /home/repertoire/resultat.txt  
+ls -l > /home/repertoire/resultat.txt
+
+Commande PIPE
+ls | sort -r     : sort fais un trie -r a l'envers 
+prendre le STDOUT de quellque choses et puis lenvoyr dans STDIN d'une autre commande qui s'attenda voir quelque choose en entrer
+tres important cette commande   on peut piper plusieur fois 
+xargs convertir / a appronfondir
+
+Commmande TAR 
+compression decompression zip gizp ou tar fais les deux
+on a fais une archive compreser en gzd
+tar -czvf plouf.tar.gz :"c" pour cree l'archive "z" pour utiliser l'algorythme gzip  v pour avoir un resultat visuel fpour dire quans quelle fichier je vais le cree 
+tar -tzvf nom_de_larchive : "t pour afcciher" "z le nom de la compressio utiliser " "v pour visual" "f pour ficher" 
+pour decompresser
+"" mkdir nom_dun_nouveau_fichier ""
+cd nom_dun_nouveau_fichier
+tar -xzvf ../nom_du_fichier_compresser   : x:pour extraire 
+
+
+
 
