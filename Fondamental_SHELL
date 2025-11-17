@@ -24,7 +24,7 @@ Rouge avec ecriture blanche: veut dire qu'il a des droit specifique et s'execute
 COMMANNDE :
 MAN:voir le manuel de commande executable  exemple:" man ls" va lister toute les commande possible avec ls
 PWD :Print working Directory en fr "affiche le repertoire courant"    pour savoir ou je me trouve
-ls -la: l → format long (long listing) // a → affiche tous les fichiers, même les fichiers cachés (qui commencent par.)
+ls -la: l → format long (long listing) // a   → affiche tous les fichiers, même les fichiers cachés (qui commencent par.)
 ls .. Repertoire Parent 
 ls * :montre dossier et fichiers  globing de remplacement
 ls ??? : chercher des fichiers qui ont que 3 lettres
@@ -152,7 +152,7 @@ Commande PIPE
 ls | sort -r     : sort fais un trie -r a l'envers 
 prendre le STDOUT de quellque choses et puis lenvoyr dans STDIN d'une autre commande qui s'attenda voir quelque choose en entrer
 tres important cette commande   on peut piper plusieur fois 
-xargs convertir / a appronfondir
+xargs convertir / a appronfondir est une commande qui recupere les argulment passe a une autre commande 
 
 Commmande TAR 
 compression decompression zip gizp ou tar fais les deux
