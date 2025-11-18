@@ -1,0 +1,28 @@
+1.0 installer et administrer 
+GNU/linux veut dire que on aura un noyau linux et les outlis gnu
+Ubuntu c'est un systeme de packaging pret a l'usage 
+une distribution c'est une compilation d'un ensemble d'outils  pour que l'on est un systeme utilisable et complet
+
+les étapes  d'installation
+1) organisations Découpage du Stockage
+2) LOgiciels Selections des logiciels à installer
+3) Sécurité Créations utilisateur et configuration des mot de passe
+
+1) organisations Découpage du Stockage
+Centos os8
+-configuration de l'heure en france ou je me trouve cliquez sur fait
+-selectionnner les logiciel: ilproposer serveur GUI "Graphical User interface" interface graphique
+la faire station de travaille
+-faire le mdp admin
+-cree un utilisateur
+-installation disque dur 
+redemarrer le systeme et il est fonctionelle
+-on  arrive sur partition du disque sur debian la  on va dans dans ma partition scsi68dataatagnulinux pas la partition assité
+-ça va demander si on veut cree une nouvelle table de partitions on met"" oui "" si jamais il avais une table ça supprimer les partiotn existante
+je descend sur la partition vide > cree partition une pour le swap  de 8 gb et le reste pour le systeme primaire choisir espace echange swap > fin du parametrage partition
+je revais dans lespace libre > je garede le gb restant ok  primaire quand on  a plus de trois primaire il proppose logique  point de montage / et utiliser comme"systeme de fichiers jounaliser ext4"
+terminter apliquer changement
+cette fois on applique personaliser 
+8192 qui fais 8gb point de montage toujou/
+
+
