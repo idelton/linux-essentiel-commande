@@ -39,6 +39,7 @@ Ls .= Chemin relative s'exprime par un point  equivaut a un ls.
 ls .. = Répertoire parent  avec les deux point
 ln -s ./Dossier2 ./dossier3: ln pour lin -s dossier2 le fichier qui existe tu va faire un lien symbolique qui s'appele dossier 3  pour un lien symbolique  il existe aussi le lien materielon peut pas le
 faire sur un repertoire.
+ls -lr : r pour inverser
 
 VIM:
 Echap > :wq > ça enregistre le contenu que tu a écrit
