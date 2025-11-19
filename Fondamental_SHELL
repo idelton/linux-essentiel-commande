@@ -200,6 +200,7 @@ pour decompresser
 "" mkdir nom_dun_nouveau_fichier ""
 cd nom_dun_nouveau_fichier
 tar -xzvf ../nom_du_fichier_compresser   : x:pour extraire 
+ou tar -xf nomdelacompresion :f:fichier 
 
 echo M* : va chercher tout les dossier commencent  par m mettre majuscule
 
