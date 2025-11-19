@@ -25,4 +25,28 @@ terminter apliquer changement
 cette fois on applique personaliser 
 8192 qui fais 8gb point de montage toujou/
 
+2.0 Configuere un systeme apres installation
+gerer les utilisateur 
+ps liste de processuse qui s'execute dans ma fenetre
+ps -f : plus de detail 
+il faudra regarder si le propriaitaire du procesesuse est le meme que le propriaitre du fichier
+faudra rearder si il est dans le groupe ex admin ou root 
 
+apt : pour les package 
+centos dnf ou apt ou snap
+rpm qa :voir packet installer
+apt update:pour regarder la version de l'editor
+apt upgrade  :pour mise a jour
+apt list: lister les package actuellement
+apt remove nom du package complet 
+snap permet deberge notre propre leur propre pacque 
+snap apt search snap plus pour ubuntu
+
+editer les fichier de ocnfigurations dans etc en su
+nano group: on va dans la ligne qu'on veut ajouter quelqu'un et on rajoute la personne avec une virgule bien sur
+crtl x : o pour enregistrer par default enregistrer ou modifer le nom
+resolv.conf : confifgration definie le serveu de nom pour le reseau le dns
+
+installer depuis les source
+etc/group: 
+etc/
