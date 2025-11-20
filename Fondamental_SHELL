@@ -43,6 +43,9 @@ tmp:vrepertoire temporaire qui va cree des fichier temporaire que l'utilisateur 
 USER: tout ce qui est mis  a disposition pour l'utilisateur seront afficher la 
 VAR: contient les fichiers utliser par les programme en taches de fond 
 
+resolv.conf : confifgration definie le serveu de nom pour le reseau le dns
+id:me dis qui je suis quellle utlisateur
+
 COMMANNDE :
 MAN:voir le manuel de commande executable  exemple:" man ls" va lister toute les commande possible avec ls
 PWD :Print working Directory en fr "affiche le repertoire courant"    pour savoir ou je me trouve
@@ -53,26 +56,37 @@ ls ??? : chercher des fichiers qui ont que 3 lettres
 ls \v?? : va afficher vim par exemple specifier un caractere 
 ls [ws]?? expresion entre crochet plusieur caractere exemple de sorti ssl 
 ls [^ws]??  // ^negation en gros il dois pas avori de w ou de s
-rmdir: supprimer dossier vide 
-rm -fr dossier/ :suppresion d'un dossier en mode f:forcer et r:recursive
-cp -r dossier/ dossier2 :cp → copie //-r → “récursif”, nécessaire pour copier un dossier entier avec tous ses sous-dossiers
-et fichiers // dossier/ → le dossier source //dossier2 → le dossier destination,
-si il est pas crée ça le crée directement 
 Ls .= Chemin relative s'exprime par un point  equivaut a un ls.
 ls .. = Répertoire parent  avec les deux point
 ln -s ./Dossier2 ./dossier3: ln pour lin -s dossier2 le fichier qui existe tu va faire un lien symbolique qui s'appele dossier 3 
 pour un lien symbolique  il existe aussi le lien materielon peut pas le
 faire sur un repertoire.
 ls -lr : r pour inverser
+ls /root 2> nouveau_fichier : ca va rediriger le message derreur dans le fichier nouveau_fichiersdeux pas dans la sorti standard  grace au 2
+cp -r dossier/ dossier2 :cp → copie //-r → “récursif”, nécessaire pour copier un dossier entier avec tous ses sous-dossiers
+et fichiers // dossier/ → le dossier source //dossier2 → le dossier destination,
+si il est pas crée ça le crée directement 
+cp -a : POUR récursive,Conserve les droits (permissions),Conserve les timestamps,Conserve les attributs spéciaux,Conserve les liens symboliques
+rmdir: supprimer dossier vide 
+rm -fr dossier/ :suppresion d'un dossier en mode f:forcer et r:recursive
 MAN: utiliser "j" pour descendre duocement ou 
                            "k" pour monter
                            "f" pour monter
                             "b" pour descendre
 man -k list : -"k" permet de cherche un mot clé description de la commande
+ps :liste de processuse qui s'execute dans ma fenetre
+ps -f : plus de detail ,il faudra regarder si le propriaitaire du procesesuse est le meme que le propriaitre du fichier
+faudra rearder si il est dans le groupe ex admin ou root 
+
 
 VIM:
 Echap > :wq > ça enregistre le contenu que tu a écrit
 Echap :q! > pour pas enregistrer
+NANO
+nano nomfichiers: on va dans la ligne qu'on veut ajouter quelqu'un et on rajoute la personne avec une virgule bien sur
+crtl x : puis o: puis entrer 
+
+
 
 Les DROIT:
 exemple DRWXR-XR-X
@@ -204,13 +218,36 @@ ou tar -xf nomdelacompresion :f:fichier
 
 echo M* : va chercher tout les dossier commencent  par m mettre majuscule
 
-Métacaracteres:
+METACARACTERE:
 espace,tabulation,
 *,joker de nom de ficher
 $,contenu variable
 \,protection de cratactere
 ''block de protection
 
+COMMANDE PACKAGE:
+apt : pour les package 
+centos dnf ou apt ou snap
+rpm qa :voir packet installer
+apt update:pour regarder la version de l'editor
+apt upgrade  :pour mise a jour 
+apt list: lister les package actuellement
+apt remove nom du package complet 
+snap permet deberge notre propre leur propre pacque 
+snap apt search snap plus pour ubuntu
+
+CREE VARIABLE: permet de stocker une valeur et utliser plus tard
+une variable est un conteneur dans laquel oon va mettre une valeur
+$MARVAR='Bonjour' : mavar contient bonjour
+echo $ps1  : c'st la variable invite de commande 
+echo $LANG: pour voir la langue utiliser
+export $MAVAR  / CCA LE TRANSFORME EN UNE VARIABLE DENVIRRONNMEENT 
+
+Filtre   Commande
+wc
+head : haut de tet
+tail -2 :
+sort: trier '-r 'pour inverser
 
 
 
