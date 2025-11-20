@@ -70,3 +70,33 @@ tail -2 :
 sort: trier '-r 'pour inverser
 la variable d'environnement sera transmise dans chaque processu crée depuis un processus qui a la varaible d'environnement
 
+Gerer les stockages 
+dans dev il apparaissent souvent avec le s au debut genre sda puis sdb ou nvme
+lsblk :bcp mieux
+fdisk :format de partiiton faire attention avant denregistrer 
+MBR  
+m:affiche dde l'aide ,p:afficher letat actuel dela table de partition, n:comme new partition, si on veut primaire on met p ,
+numero 1 secteur la ou elle va commencer:prenre par default, le secteur+10G se situra 10 plsulois que a partition 
+w:pour enregistrer 
+GPT : plus utliser 
+fdisk /dev/nvme0n1
+choisir "g" pour cre la table 
+p: voir disuqe dur 
+n:new pas deprimaire ni entendu sur gpt
+1 , par deefault  > +10G partition de 10g octet 
+t: changer de type 
+l: pour voir les nombre associer au ficher la swap cest 19 q por quitter mettre 19 pour swap, faire p et w pour enregistrer
+mkfs: cree un systeme de fichiers 
+mkfs -t ext4 /dev/sdb1 : -t : type de fichier tres robuste mais pas par default on pourra formater 
+mkfs -t xfs /dev/nvme0n1p1 :  pour les grnad volume
+
+monter suport dans u repertoire avec mount mnt sert à ca ou monter de facon ephemere des stockage media parerille mnt manuellement et media par mon bureau 
+mkdir/data 
+mount /dev/sdb1 /data :elle prend deu  choses  le nom de partition /dev/sdb1  et l'endroit /data //
+cd data
+nano partitionsdb1 :mets un contenu enregistrer
+uptime pour voir depuis quand ca a demarrer
+pour le conserve apres redemrrage faut le faire avec le fstab
+vi fstab 
+dans vi mettre /dev/sdb1   /data  ext4le format ext4  default et toujours laisser 00 , enregistrer 
+
