@@ -100,3 +100,8 @@ pour le conserve apres redemrrage faut le faire avec le fstab
 vi fstab 
 dans vi mettre /dev/sdb1   /data  ext4le format ext4  default et toujours laisser 00 , enregistrer 
 
+RAID : permet D4ASSUER LA DISPONIBILITER DES DONNER MALGRE UNE PANNE de regrouper plusieur disuqe dur avec les niveau du raid ,raid1coute gere faudra 10ocet dechaque disque RAID 5 plus utiliser
+LVM
+vgdisplay: Voir groupe de volume 
+vgeextend cl /dev:NVME02
+LVEXTEND -L=100%
