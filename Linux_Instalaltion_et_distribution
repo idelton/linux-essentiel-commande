@@ -36,7 +36,7 @@ apt : pour les package
 centos dnf ou apt ou snap
 rpm qa :voir packet installer
 apt update:pour regarder la version de l'editor
-apt upgrade  :pour mise a jour
+apt upgrade  :pour mise a jour 
 apt list: lister les package actuellement
 apt remove nom du package complet 
 snap permet deberge notre propre leur propre pacque 
