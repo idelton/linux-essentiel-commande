@@ -50,3 +50,23 @@ resolv.conf : confifgration definie le serveu de nom pour le reseau le dns
 installer depuis les source
 etc/group: 
 etc/
+
+id:me dis qui je suis quellle utlisateur
+cp -a : pour recursive et les droit
+
+vairable permet de stocker une valeur et utliser plus tard
+un evairable est un conteneur dans laquel oon va mettre une valeur
+$MARVAR='Bonjour' : devrais cree la variable
+echo $ps1  : c'st la variable invite de commande 
+echo $LANG: pour voir la langue utiliser
+export $MAVAR  / CCA LE TRANSFORME EN UNE VARIABLE DENVIRRONNMEENT 
+
+les erreur passe par la sorti d'erreur pas standar
+ls /root 2> nouveau_fichier : ca va rediriger le message derreur dans le fichier noumero deux pas dans la sorti standar  si jenleve le 2
+filtre commmande 
+wc
+head : haut de tet
+tail -2 :
+sort: trier '-r 'pour inverser
+la variable d'environnement sera transmise dans chaque processu crée depuis un processus qui a la varaible d'environnement
+
