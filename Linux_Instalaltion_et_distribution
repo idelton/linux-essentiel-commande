@@ -105,3 +105,43 @@ LVM
 vgdisplay: Voir groupe de volume 
 vgeextend cl /dev:NVME02
 LVEXTEND -L=100%
+
+un Deamon est un programme qui s'éxecute sans etre rattacher a un terminal
+ps -e : affiche tout les programme qui s'execute en arriere plan pour que mon programme sois fonctionnelle
+tty : nom du terminal associer si il y a un ?:se sont des element du noyau les pilote ou les fameux deamon ou service 
+systemd: le noyau lance systemd et lui lance tout ce qui va permettre au utilisateur son ordinateur
+systemctl is-system-running : voir si notre system est dans un etat de fonctionnement normal
+systemctl -t service: tout les fichiers service
+systemctl is-active firewalld : voir si il est active
+systectl status firewalled : permet de voir letat d'un service
+systemctl disable firewalled ou cron: pour pas quil demarre lors du boot 
+systemctl enable  firewalld :pour le reactive en 
+systemctl restart firewalld: redemarer les service ou reload
+systectl -t service: pour voir le quelle a u soucis failed
+systemctl --failed tout ce qui a echouer 
+systemctl reset-failed :  si cest pas critique je peut men charger plus tard,
+systeemctl restard posfix : ca va redemarre avec le soucis
+nano ect/postfix/main.cf pour corriger le soucis 
+systemd-analyze: pour annakyser le demarrage le quelle a pris pls de temps
+systemd-analyze: afficherles type de service classer par temps de démmmarage 
+systemd-analyze plot > boot.svg : afficher un graphique de démarrage , pur voir ou on peu optimisez
+
+syslog on a horodatage , provenannce:kernel,ftp,lp:service d'impression, importance:debug,info, notice,warn,alert,emerg 
+nano /ect/rsyslog.conf: voir la conf : a installer plus tard
+utilisr protocole syslog pour eecrire leur evenement dans u fichiers
+*.err/var/log/errors pour la ligne de config de rsyslog pour envoyer toutes les erreurs de tous les services dans le fichierq / var/ log/error
+
+
+automatiser les commandes:
+pou faire des tache regulier sur cron;on le trouve dans etc 
+cron.daily :pour jour; cron.monthly:pour mois et cron.weekly: par semaine ; cron.hourly:par heure
+cron.deny: un fichier a cree pour dire si u utilisatur qui non pas le droit d'utiliser cron
+cron.allow: uniquement ceux qui son dedans peut utliser, les cre si besoin
+Commande cron 
+crontab -l -r  -e : -r supprimer toutes les programmatin de luser yves va appelr u editeur  + parametre ex ''-l'' liste les progralmation mise en place  :: -e pour editer
+sur debian 
+nano contrab
+***** :premier les minute,2eme*lheure;3emeheure,4month;5eme day
+on peut cre une variable pour appeler nano au lieu de vi aec > export EDITOR=nano
+atd pour progrmmer un service pontuel
+at :aussi command ea explorer
