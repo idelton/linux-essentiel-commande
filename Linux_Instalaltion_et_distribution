@@ -145,3 +145,8 @@ nano contrab
 on peut cre une variable pour appeler nano au lieu de vi aec > export EDITOR=nano
 atd pour progrmmer un service pontuel
 at :aussi command ea explorer
+
+configurer le reseau 
+nmtui 
+nmcli  connection show
+nmcli connection up 'reseau noraml'
